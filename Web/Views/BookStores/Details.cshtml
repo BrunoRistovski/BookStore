@@ -1,0 +1,64 @@
+﻿@model Domain.Domain_Models.BookStore
+
+@{
+    ViewData["Title"] = "Bookstore Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-primary">Bookstore Details</h2>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3 fw-bold">@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+            <dt class="col-sm-3 fw-bold">@Html.DisplayNameFor(model => model.Address)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+            <dt class="col-sm-3 fw-bold">@Html.DisplayNameFor(model => model.City)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.City)</dd>
+            <dt class="col-sm-3 fw-bold">@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+            <dt class="col-sm-3 fw-bold">@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+            <dt class="col-sm-3 fw-bold">@Html.DisplayNameFor(model => model.WebsiteUrl)</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
+                {
+                    <a href="@Model.WebsiteUrl" target="_blank" class="text-decoration-none">Visit Website</a>
+                }
+                else
+                {
+                    <span class="text-muted">N/A</span>
+                }
+            </dd>
+        </dl>
+        <div class="d-flex gap-2">
+            <a asp-action="AddBook" asp-route-id="@Model?.Id" class="btn btn-success">Add Book</a>
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+
+    <h2 class="mt-4 text-primary">Books in @Model.Name</h2>
+    <div class="card shadow-sm p-4">
+        <table class="table table-hover text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.BooksInBookStores)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Book.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Book.Author)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Book.Price)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

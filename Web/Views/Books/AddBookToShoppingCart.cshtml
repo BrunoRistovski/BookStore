@@ -1,0 +1,38 @@
+﻿@model Domain.DTO.AddToShoppingCartDto
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title text-center">Add Book to Shopping Cart</h4>
+            <form method="post" asp-action="AddBookToShoppingCart">
+                <input type="hidden" asp-for="BookID" value="@Model.BookID" />
+
+                <div class="form-group">
+                    <label asp-for="Book.Title" class="control-label font-weight-bold"></label>
+                    <input asp-for="Book.Title" class="form-control" readonly />
+                    <span asp-validation-for="Book.Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Quantity" class="control-label font-weight-bold"></label>
+                    <input asp-for="Quantity" type="number" min="1" class="form-control" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-4 text-center">
+                    <button type="submit" class="btn btn-success btn-lg">Add To Cart</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Index", "ShoppingCart")" class="btn btn-secondary btn-sm">Back to Cart</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

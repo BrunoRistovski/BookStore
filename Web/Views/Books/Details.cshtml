@@ -1,0 +1,97 @@
+﻿@model Domain.Domain_Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center my-4">Book Details</h1>
+
+<div class="container">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">@Model.Title Information</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Author)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Author)
+                </dd>
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Genre)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Genre)
+                </dd>
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Isbn)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Isbn)
+                </dd>
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </dd>
+                <dt class="col-sm-3 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+            </dl>
+            <div class="text-right">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-sm mr-2">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary btn-sm">Back to List</a>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center my-4">@Model.Title is available in this BookStores</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BooksInBookStores)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.BookStore.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BookStore.Address)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BookStore.City)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BookStore.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BookStore.PhoneNumber)</td>
+                    <td>
+                        <a href="@Html.DisplayFor(modelItem => item.BookStore.WebsiteUrl)" target="_blank">
+                            @Html.DisplayFor(modelItem => item.BookStore.WebsiteUrl)
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

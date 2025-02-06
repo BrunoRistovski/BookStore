@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Payment Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5 text-center">
+    <h1 class="text-success mb-4">Payment Successful!</h1>
+
+    <p class="lead mb-4">Your payment has been successfully processed. Thank you for your purchase!</p>
+    <div class="mt-4">
+        <a asp-controller="Books" asp-action="Index" class="btn btn-primary btn-lg">Back to Books</a>
+    </div>
+</div>
