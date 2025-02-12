@@ -20,7 +20,7 @@
                 <th>@Html.DisplayNameFor(model => model.Description)</th>
                 <th>@Html.DisplayNameFor(model => model.Isbn)</th>
                 <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
-                <th>Ден: @Html.DisplayNameFor(model => model.Price)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -34,7 +34,7 @@
                     <td>@Html.DisplayFor(modelItem => item.Description)</td>
                     <td>@Html.DisplayFor(modelItem => item.Isbn)</td>
                     <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>Ден: @Html.DisplayFor(modelItem => item.Price)</td>
                     <td>
                         <div class="btn-group" role="group">
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning me-3">Edit</a>
